@@ -3,15 +3,19 @@ spring:
     console:
       enabled: true
   datasource:
-    url: jdbc:h2:mem:dcbapp
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: password
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/ostock_dev}
+    driver-class-name: org.postgresql.Driver
+
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:superuser}
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: postgres
     hibernate:
       ddl-auto: create
     show-sql: true
-
+    database: POSTGRESQL
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
   thymeleaf:
     cache: false
