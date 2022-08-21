@@ -19,22 +19,25 @@ public class RController {
     @Autowired
     private ValuablePaperService service;
 
+
     @GetMapping("/dscsd")
     public String getRes() {
         return service.getrRes();
     }
 
+    @CrossOrigin(origins = "https://valuable-paper.herokuapp.com/papers")
     @GetMapping
     public List<ValuablePaper> jsonPaper() {
         return service.allValuablePaper();
     }
 
+    @CrossOrigin(origins = "https://valuable-paper.herokuapp.com/papers/{id}")
     @GetMapping("/{id}")
     public ValuablePaper getPaperId(@PathVariable int id) {
-        ValuablePaper paper = service.getPaper(id);
-        return paper;
+        return service.getPaper(id);
     }
 
+    @CrossOrigin(origins = "https://valuable-paper.herokuapp.com/papers")
     @PostMapping
     public ResponseEntity<ValuablePaper> savePaper(@RequestBody ValuablePaper paper) {
 
@@ -45,6 +48,7 @@ public class RController {
     }
 
 
+    @CrossOrigin(origins = "https://valuable-paper.herokuapp.com/papers/update")
     @PostMapping("/update")
     public ValuablePaper updatePaper(@RequestBody ValuablePaper paper) {
         service.saveValuablePaper(paper);
