@@ -19,6 +19,11 @@ public class RController {
     @Autowired
     private ValuablePaperService service;
 
+    @CrossOrigin
+    @GetMapping("/test")
+    public String getTest() {
+        return "Мурад красавчик"
+    }
 
     @CrossOrigin
     @GetMapping
