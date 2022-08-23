@@ -22,7 +22,7 @@ public class RController {
     @CrossOrigin
     @GetMapping("/test")
     public String getTest() {
-        return "Мурад красавчик"
+        return "Мурад красавчик";
     }
 
     @CrossOrigin
